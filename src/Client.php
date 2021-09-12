@@ -2,23 +2,17 @@
 
 namespace Vdhicts\Rebrandly;
 
-use Exception;
 use GuzzleHttp;
+use Throwable;
 use Vdhicts\Rebrandly\Exceptions\RebrandlyException;
 
 class Client implements Contracts\Client
 {
     public const API_URL = 'https://api.rebrandly.com/v1/';
 
-    /**
-     * @var GuzzleHttp\Client
-     */
-    private $client;
+    private GuzzleHttp\Client $client;
 
     /**
-     * Client constructor.
-     *
-     * @param string $apiKey
      * @throws RebrandlyException
      */
     public function __construct(string $apiKey)
@@ -54,7 +48,7 @@ class Client implements Contracts\Client
             $response = $this
                 ->client
                 ->request($method, $endpoint, $payload);
-        } catch (Exception $exception) {
+        } catch (Throwable $exception) {
             throw RebrandlyException::failedRequest($exception->getMessage());
         }
 

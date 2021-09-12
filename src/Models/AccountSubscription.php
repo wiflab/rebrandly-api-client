@@ -9,41 +9,12 @@ use Vdhicts\Rebrandly\Contracts\Model;
 
 class AccountSubscription implements Model
 {
-    /**
-     * UTC subscription date/time of the account's current plan.
-     * @var DateTimeInterface
-     */
-    private $createdAt;
+    private DateTimeInterface $createdAt;
+    private string $category = '';
+    private int $due = 0;
+    private array $limits = [];
+    private array $features = [];
 
-    /**
-     * The plan the user is on.
-     * @var string
-     */
-    private $category = '';
-
-    /**
-     * The amount of dates the payment is due.
-     * @var int
-     */
-    private $due = 0;
-
-    /**
-     * Account's resources usage and limits: how many links/domains/tags/etc created so far and which are the maximum
-     * limits.
-     * @var array
-     */
-    private $limits = [];
-
-    /**
-     * Account's features.
-     * @var array
-     */
-    private $features = [];
-
-    /**
-     * @param stdClass $response
-     * @return AccountSubscription
-     */
     public static function fromResponse(stdClass $response): AccountSubscription
     {
         $subscription = (new self())
@@ -62,62 +33,38 @@ class AccountSubscription implements Model
         return $subscription;
     }
 
-    /**
-     * AccountSubscription constructor.
-     */
     public function __construct()
     {
         $this->createdAt = Carbon::now();
     }
 
-    /**
-     * @return DateTimeInterface
-     */
     public function getCreatedAt(): DateTimeInterface
     {
         return $this->createdAt;
     }
 
-    /**
-     * @param DateTimeInterface $createdAt
-     * @return AccountSubscription
-     */
     public function setCreatedAt(DateTimeInterface $createdAt): AccountSubscription
     {
         $this->createdAt = $createdAt;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getCategory(): string
     {
         return $this->category;
     }
 
-    /**
-     * @param string $category
-     * @return AccountSubscription
-     */
     public function setCategory(string $category): AccountSubscription
     {
         $this->category = $category;
         return $this;
     }
 
-    /**
-     * @return int
-     */
     public function getDue(): int
     {
         return $this->due;
     }
 
-    /**
-     * @param int $due
-     * @return AccountSubscription
-     */
     public function setDue(int $due): AccountSubscription
     {
         $this->due = $due;
@@ -137,11 +84,6 @@ class AccountSubscription implements Model
         return $this->limits;
     }
 
-    /**
-     * @param string $key
-     * @param AccountLimit $limit
-     * @return AccountSubscription
-     */
     public function setLimits(string $key, AccountLimit $limit): AccountSubscription
     {
         $this->limits[$key] = $limit;

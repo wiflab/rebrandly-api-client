@@ -4,11 +4,11 @@ Easily use the [API](https://developers.rebrandly.com/) of the url shortener [Re
 
 ## Requirements
 
-This packages requires PHP 7.2+.
+This packages requires PHP 7.4+.
 
 ## Installation
 
-This package can be used in any PHP project or with any framework. The packages is tested in PHP 7.0.
+This package can be used in any PHP project or with any framework. The packages is tested in PHP 7.4.
 
 You can install the package via composer:
 
@@ -53,7 +53,7 @@ $links = $rebrandly->links()->list(new Options(['orderBy' => 'clicks', 'orderDir
 
 ### Models
 
-This client will always return the related nideks. When creating a new resource, the object is provided to the `create`
+This client will always return the related models. When creating a new resource, the object is provided to the `create`
 method. For example, to create a link:
 
 ```php
@@ -96,7 +96,7 @@ $client = new Rebrandly\Client(config('rebrandly.api_key'));
 
 ## Tests
 
-Uunit tests are available in the `tests` folder. Run via phpunit:
+Unit tests are available in the `tests` folder. Run via phpunit:
 
 `vendor\bin\phpunit`
 
@@ -109,8 +109,8 @@ exchange you will be credited as contributor on this page.
 
 ## Security
 
-If you discover any security related issues in this or other packages of Vdhicts, please email info@vdhicts.nl instead
-of using the issue tracker.
+If you discover any security related issues in this or other packages of Vdhicts, please email security@vdhicts.nl 
+instead of using the issue tracker.
 
 ## License
 
@@ -123,6 +123,5 @@ problem with this client, please open an issue on GitHub.
 
 ## About vdhicts
 
-[Van der Heiden ICT services](https://www.vdhicts.nl) is the name of my personal company for which I work as
-freelancer. Van der Heiden ICT services develops and implements IT solutions for businesses and educational
-institutions.
+[Vdhicts](https://www.vdhicts.nl) is the name of my personal company. Vdhicts develops and implements IT solutions for 
+businesses and educational institutions.

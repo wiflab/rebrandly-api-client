@@ -4,15 +4,8 @@ namespace Vdhicts\Rebrandly\Support;
 
 class Options
 {
-    /**
-     * @var array
-     */
-    private $attributes = [];
+    private array $attributes;
 
-    /**
-     * Filter constructor.
-     * @param array $attributes
-     */
     public function __construct(array $attributes = [])
     {
         $this->attributes = $attributes;
@@ -35,19 +28,13 @@ class Options
         return $this->attributes;
     }
 
-    /**
-     * @param string $key
-     * @return bool
-     */
     public function has(string $key): bool
     {
         return array_key_exists($key, $this->attributes);
     }
 
     /**
-     * @param string $key
      * @param mixed $value
-     * @return Options
      */
     public function set(string $key, $value = null): Options
     {
@@ -56,9 +43,6 @@ class Options
         return $this;
     }
 
-    /**
-     * @return array
-     */
     public function toArray(): array
     {
         return $this->attributes;

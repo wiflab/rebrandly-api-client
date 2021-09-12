@@ -7,42 +7,21 @@ use Vdhicts\Rebrandly\Support\Options;
 
 abstract class Endpoint
 {
-    /**
-     * @var Client
-     */
-    protected $client;
+    protected Client $client;
+    private string $workspace;
 
-    /**
-     * @var string
-     */
-    private $workspace;
-
-    /**
-     * Endpoint constructor.
-     *
-     * @param Client $client
-     */
     public function __construct(Client $client)
     {
         $this->client = $client;
     }
 
-    /**
-     * @param string $workspace
-     * @return $this
-     */
-    public function setWorkspace(string $workspace)
+    public function setWorkspace(string $workspace): Endpoint
     {
         $this->workspace = $workspace;
 
         return $this;
     }
 
-    /**
-     * @param Options|null $options
-     * @param array $allowedFields
-     * @return array
-     */
     private function queryFromOptions(Options $options = null, array $allowedFields = []): array
     {
         if (is_null($options)) {
@@ -62,12 +41,6 @@ abstract class Endpoint
         return $optionsArray;
     }
 
-    /**
-     * @param array $payload
-     * @param Options|null $options
-     * @param array $allowedFields
-     * @return array
-     */
     protected function prepare(array $payload = [], Options $options = null, array $allowedFields = []): array
     {
         if (is_null($this->workspace)) {
