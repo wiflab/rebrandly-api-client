@@ -4,11 +4,11 @@ Easily use the [API](https://developers.rebrandly.com/) of the url shortener [Re
 
 ## Requirements
 
-This packages requires PHP 7.4+.
+This packages requires PHP 8.0+.
 
 ## Installation
 
-This package can be used in any PHP project or with any framework. The packages is tested in PHP 7.4.
+This package can be used in any PHP project or with any framework. The packages is tested in PHP 8.0.
 
 You can install the package via composer:
 
