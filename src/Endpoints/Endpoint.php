@@ -8,7 +8,7 @@ use Vdhicts\Rebrandly\Support\Options;
 abstract class Endpoint
 {
     protected Client $client;
-    private string $workspace;
+    private string $workspace = '';
 
     public function __construct(Client $client)
     {
@@ -43,7 +43,7 @@ abstract class Endpoint
 
     protected function prepare(array $payload = [], Options $options = null, array $allowedFields = []): array
     {
-        if (is_null($this->workspace)) {
+        if (is_null($this->workspace) || $this->workspace == '') {
             unset($payload['header']['workspace']);
         } else {
             $payload['header']['workspace'] = $this->workspace;
