@@ -43,7 +43,7 @@ abstract class Endpoint
 
     protected function prepare(array $payload = [], Options $options = null, array $allowedFields = []): array
     {
-        if (is_null($this->workspace) || $this->workspace == '') {
+        if ($this->workspace == '') {
             unset($payload['header']['workspace']);
         } else {
             $payload['header']['workspace'] = $this->workspace;
